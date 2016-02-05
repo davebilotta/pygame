@@ -63,7 +63,12 @@ def newQuestion():
     global answer
 
     answer = ""
-    question = str(randint(0,maxNum)) + " + " + str(randint(0,maxNum))
+    if (randint(0,1) == 0):
+        oper = " + "
+    else:
+        oper = " - "
+
+    question = str(randint(0,maxNum)) + oper + str(randint(0,maxNum))
     return question
 
 def renderQuestion():
@@ -130,7 +135,7 @@ while True:
                 
             # Numbers 48-57 (inclusive)
             # May need to differentiate between keypad and regular?
-            if (event.key in range(48,58)):
+            if ((event.key == 45) or (event.key in range(48,58))):
                 answer += str(chr(event.key))
                 #print answer
 
